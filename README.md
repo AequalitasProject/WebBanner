@@ -1,6 +1,6 @@
 # Web banner for International Workers' Day 2020
 
-Adding a site banner to pages promoting workers' day 2020
+Adding a site banner to web pages to raise awareness on topics or campaigns.
 
 [![Travis build status](http://img.shields.io/travis/AequalitasProject/WorkersDay2020.svg?style=flat)](https://travis-ci.org/AequalitasProject/WorkersDay2020)
 [![Code Climate](https://codeclimate.com/github/AequalitasProject/WorkersDay2020/badges/gpa.svg)](https://codeclimate.com/github/AequalitasProject/WorkersDay2020)
