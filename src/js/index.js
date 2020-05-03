@@ -1,18 +1,20 @@
 import config from './config';
 import Utils from './services/Utils';
+import Actions from './services/Actions';
 // This loads on the entire page, creates the widget iframe, etc
 
 (function () {
   function onDocumentReady() {
-    Utils.createIframe(config.BANNER_HOST_URL + '/widget.html');
+    // Utils.resetCookie(Utils.getCookieName());
+    if (config.ALWAYS_SHOW && Utils.isClosedCookieExists()) {
+      return;
+    }
 
-    // TODO: Make this configurable?
+    Utils.createIframe(config.BANNER_HOST_URL + `/${config.WIDGET_FILENAME}`);
+    // TODO: Make this configurable
     const iFrameHeight = window.innerWidth < 600 ? '200px' : '145px';
 
     // Create inline style for the iframe and wrapper
-    const replacer = (key, value) => {
-      return value.replace(/[^\w\s]/gi, '');
-    };
     let style = [
       `#${config.DOM_ID} {`,
       'position: fixed;',
@@ -34,10 +36,8 @@ import Utils from './services/Utils';
 
     Utils.injectCSS(config.DOM_ID + '_CSS', style);
 
-    // listen for messages from iframe
-    // window.addEventListener('message', receiveMessage);
-
-    // document.removeEventListener('DOMContentLoaded', initializeInterface);
+    // listen and manage actions from iframe
+    window.addEventListener('message', Actions.receiveMessage);
   }
 
   // Wait for DOM content to load.
