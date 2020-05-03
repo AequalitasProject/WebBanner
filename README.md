@@ -1,4 +1,4 @@
-# Web banner for International Workers' Day 2020
+# Web banner awareness efforts
 
 Adding a site banner to web pages to raise awareness on topics or campaigns.
 
